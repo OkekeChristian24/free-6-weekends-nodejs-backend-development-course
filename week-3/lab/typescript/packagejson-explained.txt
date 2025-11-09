@@ -1,0 +1,9 @@
+name - Name of the project (must be unique if published to npm registry).
+version - Follows semantic versioning (e.g. 1.0.0).
+description - Short description of the project.
+main - Entry point file when someone imports your package.
+scripts - Custom terminal commands (e.g. npm run start).
+dependencies - Packages required for the app to run in production.
+devDependencies - Packages needed only during development (e.g. testing, building).
+author - Name of the package author.
+license - Specifies how others can use your code.

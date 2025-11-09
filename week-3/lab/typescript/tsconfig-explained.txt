@@ -1,0 +1,49 @@
+Recommended compilerOptions for a Node.js TypeScript project
+
+target: "ES2022" (or "ESNext")
+Defines the version of JavaScript that TypeScript will compile to.
+For modern Node versions (v18+), ES2022 or ESNext is recommended.
+
+module: "NodeNext" or "CommonJS"
+Determines the module system used in the compiled output.
+
+Use "NodeNext" if your project uses native import/export (ESM).
+
+Use "CommonJS" if your project uses require() syntax.
+
+moduleResolution: "NodeNext" or "Node"
+Controls how TypeScript resolves imports.
+If you’re using "NodeNext" module system, also use "NodeNext" resolution.
+
+rootDir: "src"
+Specifies the folder where your TypeScript source files are located.
+
+outDir: "dist"
+Tells TypeScript where to output the compiled JavaScript files.
+
+esModuleInterop: true
+Allows seamless interoperation between CommonJS and ES Modules.
+This lets you use import express from "express"; even for CommonJS modules.
+
+resolveJsonModule: true
+Enables importing .json files directly into TypeScript modules.
+
+strict: true
+Turns on all strict type checking options — ensuring safer and more reliable code.
+
+skipLibCheck: true
+Skips type checking of .d.ts files inside node_modules.
+This speeds up compilation and is safe for most projects.
+
+forceConsistentCasingInFileNames: true
+Ensures file name casing is consistent across imports,
+preventing issues when moving code between case-sensitive systems.
+
+types: ["node"]
+Includes Node.js type definitions globally, giving you IntelliSense for process, __dirname, etc.
+
+include: ["src/**/*"]
+Specifies which files and folders TypeScript should include in compilation.
+
+exclude: ["node_modules", "dist"]
+Prevents TypeScript from compiling external dependencies and build outputs.
