@@ -1,0 +1,35 @@
+{
+	"name": "blog-expressjs",
+	"version": "1.0.0",
+	"main": "dist/server.js",
+	"scripts": {
+		"dev": "npx ts-node-dev --files src/server.ts",
+		"start": "node dist/server.js",
+		"build": "rm -rf dist && tsc",
+		"type-check": "npx tsc --noEmit",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"dependencies": {
+		"bcrypt": "^6.0.0",
+		"cors": "^2.8.5",
+		"dotenv": "^17.2.1",
+		"express": "^5.1.0",
+		"express-validator": "^7.2.1",
+		"ioredis": "^5.8.2",
+		"jsonwebtoken": "^9.0.2",
+		"mysql2": "^3.14.3"
+	},
+	"devDependencies": {
+		"@types/bcrypt": "^6.0.0",
+		"@types/cors": "^2.8.19",
+		"@types/express": "^5.0.3",
+		"@types/jsonwebtoken": "^9.0.10",
+		"@types/node": "^24.10.1",
+		"ts-node-dev": "^2.0.0",
+		"typescript": "^5.9.2"
+	}
+}

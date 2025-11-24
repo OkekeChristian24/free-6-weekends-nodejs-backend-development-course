@@ -1,0 +1,91 @@
+REDIS CLI CHEAT SHEET — STORING & RETRIEVING DATA
+=================================================
+
+1. STRING COMMANDS
+-------------------
+Store:
+  SET key value
+  SET key value EX 60
+  MSET key1 value1 key2 value2
+  APPEND key value
+
+Retrieve:
+  GET key
+  MGET key1 key2
+  GETRANGE key start end
+
+Counters:
+  INCR key
+  DECR key
+  INCRBY key 10
+
+
+2. HASH COMMANDS
+-----------------
+Store:
+  HSET user:1 name "Promise"
+  HMSET user:1 name "Promise" age "30"
+  HINCRBY user:1 visits 1
+
+Retrieve:
+  HGET user:1 name
+  HGETALL user:1
+  HKEYS user:1
+  HVALS user:1
+
+
+3. LIST COMMANDS
+-----------------
+Store:
+  LPUSH tasks "task1"
+  RPUSH tasks "task2"
+
+Retrieve:
+  LRANGE tasks 0 -1
+  LPOP tasks
+  RPOP tasks
+  LINDEX tasks index
+
+
+4. SET COMMANDS
+----------------
+Store:
+  SADD tags "redis"
+
+Retrieve:
+  SMEMBERS tags
+  SISMEMBER tags "redis"
+  SCARD tags
+
+
+5. SORTED SET COMMANDS (ZSET)
+------------------------------
+Store:
+  ZADD leaderboard 100 "promise"
+  ZADD leaderboard 150 "john"
+
+Retrieve:
+  ZRANGE leaderboard 0 -1 WITHSCORES
+  ZREVRANGE leaderboard 0 -1 WITHSCORES
+  ZRANGEBYSCORE leaderboard 0 200
+
+
+6. EXPIRATION COMMANDS
+-----------------------
+  SET session:123 data EX 120
+  EXPIRE key 60
+  TTL key
+
+
+7. KEY MANAGEMENT
+------------------
+  DEL key
+  EXISTS key
+  RENAME oldkey newkey
+
+
+8. ADMIN COMMANDS
+------------------
+  KEYS *
+  FLUSHDB
+  FLUSHALL

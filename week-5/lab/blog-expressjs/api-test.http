@@ -1,0 +1,15 @@
+
+# AUTH REQUESTS
+GET http://localhost:5000/api/v1/posts/189488 HTTP/1.1
+
+POST http://localhost:5000/api/v1/auth/login HTTP/1.1
+
+# USER REQUESTS
+GET http://localhost:5000/api/v1/users HTTP/1.1
+
+
+# POST REQUESTS
+GET http://localhost:5000/api/v1/posts HTTP/1.1
+
+# COMMENT REQUESTS
+GET http://localhost:5000/api/v1/comments HTTP/1.1

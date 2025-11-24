@@ -1,0 +1,153 @@
+1. Build Docker Images
+# Build image with a tag
+docker build -t myapp .
+
+# Build image with a tag using a specific Dockerfile
+docker build -f Dockerfile.prod -t myapp .
+
+# Build image with a version tag
+docker build -t myapp:1.0 .
+
+# Build image and no cache
+docker build --no-cache -t myapp .
+
+2. Run Containers
+# Run container normally
+docker run myapp
+
+# Run with a custom container name
+docker run --name myapp-container myapp
+
+# Run in detached mode (background)
+docker run -d myapp
+
+# Run interactive shell inside container
+docker run -it myapp sh
+
+3. Run Containers with Port Mapping
+# Map container port 5000 to host port 5000
+docker run -p 5000:5000 myapp
+
+# Map multiple ports
+docker run -p 5000:5000 -p 3000:3000 myapp
+
+4. Run Containers with Environment Variables
+# Pass a single environment variable
+docker run -e NODE_ENV=production myapp
+
+# Pass multiple variables
+docker run -e NODE_ENV=production -e PORT=5000 myapp
+
+# Load env variables from an .env file
+docker run --env-file .env myapp
+
+5. Run Containers with Volumes
+# Mount local folder into container
+docker run -v $(pwd):/usr/src/app myapp
+
+# Named volume
+docker volume create mydata
+docker run -v mydata:/data myapp
+
+6. Run Containers with All: Env, Ports, Volumes
+docker run -d \
+  --name myapp \
+  --env-file .env \
+  -p 5000:5000 \
+  -v $(pwd):/usr/src/app \
+  myapp
+
+OR
+
+docker run -d --name myapp --env-file .env -p 5000:5000 -v $(pwd):/usr/src/app myapp
+
+7. Container Management
+# List running containers
+docker ps
+
+# List all containers
+docker ps -a
+
+# Stop container
+docker stop myapp-container
+
+# Start container
+docker start myapp-container
+
+# Restart container
+docker restart myapp-container
+
+# Remove container
+docker rm myapp-container
+
+# Remove container forcefully
+docker rm -f myapp-container
+
+8. Image Management
+# List images
+docker images
+
+# Remove image
+docker rmi myapp
+
+# Prune unused images
+docker image prune -a -f
+
+9. Access Container Shell
+docker exec -it myapp-container sh
+
+# Or bash (if container has bash)
+docker exec -it myapp-container bash
+
+10. View Logs
+docker logs myapp-container
+
+# Follow logs in real-time
+docker logs -f myapp-container
+
+11. Compose Commands
+# Start containers (build if needed)
+docker compose up
+
+# Start in detached mode
+docker compose up -d
+
+# Build images
+docker compose build
+
+# Build without cache
+docker compose build --no-cache
+
+# Stop and remove containers
+docker compose down
+
+# Stop but keep containers
+docker compose stop
+
+# Restart containers
+docker compose restart
+
+# View logs
+docker compose logs
+docker compose logs -f
+
+# Run a command inside a compose service
+docker compose exec myapp sh
+
+12. Compose With Specific Files
+docker compose -f docker-compose.prod.yml up -d
+docker compose -f docker-compose.dev.yml up
+
+13. Compose with Environment File
+(compose automatically loads .env in the same dir)
+ENV_FILE=myvars.env docker compose up -d
+
+14. Deploy Docker image to Docker Hub
+# Login to Docker account on Docker Hub
+docker login
+
+# Tag the your Docker image
+docker tag <image-name> <docker-account-username>/<image-name-to-use>:<image-tag-to-use>
+
+# Push the your Docker image to Docker Hub
+docker push <docker-account-username>/<image-name-to-use>:<image-tag-to-use>
